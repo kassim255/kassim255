@@ -16,7 +16,7 @@ on:
   push:
     branches: [ "main" ]
 
-env:
+
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GAR_LOCATION: us-central1 # TODO: update region of the Artifact Registry
   GKE_CLUSTER: cluster-1    # TODO: update to cluster name
@@ -30,13 +30,13 @@ jobs:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
     environment: production
+permissions:
 
-    permissions:
       contents: 'read'
       id-token: 'write'
-
-    steps:
-    - name: Checkout
+   steps:
+  
+- name: Checkout
       uses: actions/checkout@v3
 
     # Configure Workload Identity Federation and generate an access token.
